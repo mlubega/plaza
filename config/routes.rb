@@ -1,8 +1,12 @@
 Plaza::Application.routes.draw do
   #get "posts/index"
-  #get "posts/new"
+   get "posts/new"
+  resources :posts
   root 'posts#index'
-  match '/newpost', to: 'posts#new',    via: 'get'
+  
+   match ':controller(/:action(:/id))', via: [:get, :post]
+  
+  # match '/newpost', to: 'posts#new',    via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
