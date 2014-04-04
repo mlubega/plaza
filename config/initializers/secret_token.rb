@@ -9,4 +9,22 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Plaza::Application.config.secret_key_base = '766d5df4ba63584a22855db34122ec742141373d79b621699fba339188b20beb917a540d94735e02b282e381ef4b3c3e4f2e2af95c58534f9e3f5ebd7f1f73f8'
+
+#Plaza::Application.config.secret_key_base = '766d5df4ba63584a22855db34122ec742141373d79b621699fba339188b20beb917a540d94735e02b282e381ef4b3c3e4f2e2af95c58534f9e3f5ebd7f1f73f8'
+
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+Plaza::Application.config.secret_key_base = secure_token
