@@ -1,7 +1,10 @@
 <h1>Posts List</h1>
 
-<div class="container">
+
 <ul>
  <%= render @posts %> 
 </ul>
+
+<div class="center">
+<%= link_to "Add a Post", new_post_path, class:"btn btn-large btn-info" %>
 </div>
