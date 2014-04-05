@@ -1,6 +1,6 @@
 Plaza::Application.routes.draw do
   #get "posts/index"
-   get "posts/new"
+  #get "posts/new"
   resources :posts
   root 'posts#index'
   
