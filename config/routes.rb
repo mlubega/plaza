@@ -1,8 +1,9 @@
 Plaza::Application.routes.draw do
+  get "static_pages/home" 
   #get "posts/index"
   #get "posts/new"
   resources :posts
-  root 'posts#index'
+  root 'static_pages#home'
   
    match ':controller(/:action(:/id))', via: [:get, :post]
   
