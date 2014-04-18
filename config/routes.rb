@@ -1,4 +1,7 @@
 Plaza::Application.routes.draw do
+  get "users/new"
+  get "users/show"
+  get "users/edit"
   get "static_pages/home" 
   #get "posts/index"
   #get "posts/new"
