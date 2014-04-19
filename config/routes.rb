@@ -1,4 +1,6 @@
 Plaza::Application.routes.draw do
+  get "courses/new"
+  get "courses/show"
   get "schools/new"
   get "schools/index"
  # get "users/new"
@@ -10,6 +12,7 @@ Plaza::Application.routes.draw do
   resources :posts
   resources :users
   resources :schools
+  resources :courses
   root 'static_pages#home'
   
   match '/signup', to: 'users#new',   via: 'get'
