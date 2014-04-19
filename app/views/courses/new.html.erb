@@ -5,14 +5,20 @@
   <div class="span6 offset3">
     <%= form_for(@course) do |f| %>
 
+      <%= render 'shared/error_messages', object: f.object %>
+      
       <%= f.label :title %>
       <%= f.text_field :title %>
 
+      <%= f.label :course_number %>
+      <%= f.text_field :course_number %>
+      
       <%= f.label :school_id %>
       <%= f.collection_select :school_id, School.all, :id, :name %>
 
       <%= f.submit "Create Class", class: "btn btn-large btn-primary" %>
     <% end %>
+      <%= link_to "Add Your School", new_school_path, class: "btn btn-large btn-danger" %> 
   </div>
 </div>
 

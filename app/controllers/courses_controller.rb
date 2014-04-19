@@ -8,6 +8,7 @@ class CoursesController < ApplicationController
    if !@course.save
      render 'new'
    else
+     flash[:success] = "Course created successfully!"
      render 'show'
    end
   end
@@ -18,7 +19,7 @@ class CoursesController < ApplicationController
   
   private
   def course_params
-   params.require(:course).permit(:title, :school_id)
+   params.require(:course).permit(:title, :course_number, :school_id)
   end
 
 

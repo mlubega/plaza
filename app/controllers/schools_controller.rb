@@ -4,6 +4,12 @@ class SchoolsController < ApplicationController
   end
   
   def create
+   @school = School.new(school_params)
+   if !@school.save
+     render 'new'
+   else
+     redirect_to controller: "courses", action: "new"
+   end
   end
 
   def index
