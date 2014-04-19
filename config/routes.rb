@@ -1,15 +1,20 @@
 Plaza::Application.routes.draw do
-  get "users/new"
-  get "users/show"
-  get "users/edit"
-  get "static_pages/home" 
+  get "schools/new"
+  get "schools/index"
+ # get "users/new"
+ # get "users/show"
+ # get "users/edit"
+ # get "static_pages/home" 
   #get "posts/index"
   #get "posts/new"
   resources :posts
+  resources :users
+  resources :schools
   root 'static_pages#home'
   
-   match ':controller(/:action(:/id))', via: [:get, :post]
-  
+  match '/signup', to: 'users#new',   via: 'get'
+  match ':controller(/:action(:/id))', via: [:get, :post]
+    
   # match '/newpost', to: 'posts#new',    via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

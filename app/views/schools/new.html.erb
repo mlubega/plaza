@@ -1,0 +1,15 @@
+<% provide(:title, 'Plaza') %>
+
+<h1> Enter your school:</h1>
+  <div class="span6 offset3">
+    <%= form_for(@school) do |f| %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.submit "Add a school", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+
+</div>
+
