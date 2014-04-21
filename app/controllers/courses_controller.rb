@@ -8,7 +8,7 @@ class CoursesController < ApplicationController
    if !@course.save
      render 'new'
    else
-     flash[:success] = "Course created successfully!"
+     flash.now[:success] = "Course created successfully!"
      render 'show'
    end
   end
