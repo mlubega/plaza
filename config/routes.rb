@@ -1,5 +1,5 @@
 Plaza::Application.routes.draw do
-#  get "courses/new"
+ # get "courses/new"
  # get "courses/show"
  # get "schools/new"
  # get "schools/index"

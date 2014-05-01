@@ -120,3 +120,14 @@ input, textarea, select, .uneditable-input {
 input {
   height: auto !important;
 }
+
+/* table */
+
+thead th {
+  color: brown;
+}
+
+tbody td {
+   font-size: 0.74em;
+   font-weight: normal;
+}

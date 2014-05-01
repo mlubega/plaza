@@ -9,13 +9,18 @@ class CoursesController < ApplicationController
      render 'new'
    else
      flash.now[:success] = "Course created successfully!"
-     render 'show'
+     redirect_to action:'show', id:@course.id
    end
   end
 
   def show
    @course = Course.find(params[:id])
+   @topics = @course.topics
+   if params[:topicID]!=nil
+     @topic= Topic.find(params[:topicID])
+   end
   end
+  
   
   private
   def course_params
