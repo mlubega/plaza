@@ -13,7 +13,7 @@ Plaza::Application.routes.draw do
   resources :users
   resources :schools
   resources :courses
-  root 'static_pages#home'
+  root 'static_pages#base'
   
   match ':controller(/:action(:/id))', via: [:get, :post]
     
