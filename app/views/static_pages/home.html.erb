@@ -1,0 +1,14 @@
+<div class="center hero-unit">
+  <% if signed_in? %>
+    <h1>Welcome to Plaza</h1>
+    <h2>Students and Teachers</h2>
+
+    <%= link_to "Create a course", new_course_path, class: "btn btn-large btn-danger" %>
+    <%= link_to "Join a course", '#', class: "btn btn-large btn-info" %>
+  <% else %>
+    <h2> Teachers & Students </h2>
+    <h1>Plaza : )</h1>
+    <h2></h2>
+    <%= link_to "Create an account", new_user_path, class: "btn btn-large btn-danger" %>
+  <% end %>
+</div>

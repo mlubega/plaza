@@ -15,7 +15,7 @@ Plaza::Application.routes.draw do
   resources :courses
   resources :sessions, only: [:new, :create, :destroy]
   
-  root 'static_pages#base'
+  root 'static_pages#home'
   
   match '/signup', to: 'users#new',         via: 'get'
   match '/signin', to: 'sessions#new',      via: 'get'
