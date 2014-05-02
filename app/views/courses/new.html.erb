@@ -12,13 +12,19 @@
 
       <%= f.label :course_number %>
       <%= f.text_field :course_number %>
-      
+	  
+
+	  
       <%= f.label :school_id %>
       <%= f.collection_select :school_id, School.all, :id, :name %>
-
-      <%= f.submit "Create Class", class: "btn btn-large btn-primary" %>
+	  <%= link_to "Add Your School", new_school_path, class: "btn btn-danger" %> 
+	  
+	  <h1></h1>
+	  <%= f.submit "Create Class", class: "btn btn-large btn-primary" %>
+    
     <% end %>
-      <%= link_to "Add Your School", new_school_path, class: "btn btn-large btn-danger" %> 
+	
+    
   </div>
 </div>
 

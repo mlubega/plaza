@@ -4,9 +4,22 @@
           <%= link_to "PLAZA", '#', id: "logo" %>
           <nav>
             <ul class="nav pull-right">
-              <li><%= link_to "Home",    '#' %></li>
-                          <li><%= link_to "Posts", posts_path %></li>
-              <li><%= link_to "Sign in", '#' %></li>
+              <li><%= link_to "Home", root_path %></li>
+			  <% if signed_in? %>  
+			  <li id="fat-menu" class="dropdown">
+			    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				  Courses <b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+				  <% current_user.courses.each do |c| %>
+				  <li><%= link_to "#{c.title} #{c.course_number}", course_path(c) %></li>
+				  <% end %>
+				</ul>
+			  </li>	
+			  <li><%= link_to "Sign out", signout_path, method:'delete' %></li>				  
+			  <% else %>
+              <li><%= link_to "Sign in", signin_path %></li>
+			  <% end %>
             </ul>
           </nav>
         </div>
