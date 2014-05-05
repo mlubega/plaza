@@ -7,15 +7,15 @@ class CoursesController < ApplicationController
     if params[:course][:going_to_a_course]
       course_id = params[:course][:course_id]
       course = Course.find(course_id)
-      course.user = current_user
       course.save
+      current_user.enroll!(course)
       redirect_to action:'show', id:course_id, fromDropdownMenu:true
     else
       @course = Course.new(course_params)
-      @course.user = current_user
       if !@course.save
         render 'new'
       else
+        current_user.enroll!(@course)
         flash.now[:success] = "Course created successfully!"
         redirect_to action:'show', id:@course.id, fromCreateACourse:true
       end

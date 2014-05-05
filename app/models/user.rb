@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   
-  has_many :courses
+  has_many :courses, through: :enrollments
+  has_many :enrollments, foreign_key: 'user_id', dependent: :destroy
 
   before_save { email.downcase! }
   before_create :create_remember_token
@@ -19,6 +20,18 @@ class User < ActiveRecord::Base
  
  def User.hash(token)
    Digest::SHA1.hexdigest(token.to_s)
+ end
+ 
+ def enrolled?(course)
+   enrollments.find_by_course_id(course.id)
+ end
+ 
+ def enroll!(course)
+   enrollments.create!(course_id: course.id)
+ end
+ 
+ def drop!(course)
+   enrollments.find_by_course_id(course.id).destroy
  end
  
  private
