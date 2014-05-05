@@ -1,5 +1,3 @@
-<h1>Posts List</h1>
-
 <h1><%= @course.title %></h1>
 <div class="row">
   <aside class="span4">
@@ -23,7 +21,7 @@
 	 <%= render @posts %> 
 	</ul>
 	<div class="center">
-	<%= link_to "Add a Post", new_post_path, class:"btn btn-large btn-info" %>
+	<%= link_to "Comment",  {action: 'new',topic_id:@posts.first.topic.id, fromCommentLink:true}, class: "btn btn-large btn-danger" %>
 	</div>
   </div>
 </div>

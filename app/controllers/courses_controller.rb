@@ -20,6 +20,7 @@ class CoursesController < ApplicationController
     end
     @course = Course.find(cookies[:course_id])
     @topics = @course.topics
+  
   end
   
   

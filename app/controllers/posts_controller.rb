@@ -6,15 +6,24 @@ class PostsController < ApplicationController
     @topics = @course.topics
   end
 
+
   def new
+    if params[:fromCommentLink]
+      @topic = Topic.find(params[:topic_id])
+      @posts= @topic.posts
+    end
     @post = Post.new
     @course = Course.find(cookies[:course_id])
     @topics = @course.topics
   end
   
   def create
+    if topic_id = params[:post][:topic_id]
+      topic = Topic.find(topic_id)
+    else
+      topic = Topic.new
+    end
     @post = Post.new(post_params)
-    topic = Topic.new
     course = Course.find(cookies[:course_id])
     topic.course_id = course.id
     topic.save
@@ -32,4 +41,6 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title,:content)
   end
+  
+
 end
