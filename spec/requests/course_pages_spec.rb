@@ -15,10 +15,8 @@ describe "CoursePages" do
           select 'Area 51', from: "School"
 				end
 
-#          visit new_course_path
-
   	    it "after saving course" do	
-					expect {click_button "Create Class"}.to change(Course, :count).by(1)
+					expect{click_button "Create Class"}.to change(Course, :count).by(1)
 				end
 	end
 end

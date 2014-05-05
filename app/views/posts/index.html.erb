@@ -1,10 +1,29 @@
 <h1>Posts List</h1>
 
-
-<ul>
- <%= render @posts %> 
-</ul>
-
-<div class="center">
-<%= link_to "Add a Post", new_post_path, class:"btn btn-large btn-info" %>
+<h1><%= @course.title %></h1>
+<div class="row">
+  <aside class="span4">
+  <%= link_to "New post", new_post_path, class: "btn btn-info" %>	 
+  <section>
+  <table class="table table-hover">
+    <thead><tr><th>Posts</th></tr></thead>
+	<tbody>
+	<% @topics.each do |t| %>
+	 <tr>
+	   <td><%= link_to "#{t.posts.first.title}", controller:'posts', action:'index', topic_id:t.id %></td>
+     </tr>
+	<% end %>
+    </tbody>
+  </table>
+  </section>
+  </aside>
+  
+  <div class="span8">
+	<ul>
+	 <%= render @posts %> 
+	</ul>
+	<div class="center">
+	<%= link_to "Add a Post", new_post_path, class:"btn btn-large btn-info" %>
+	</div>
+  </div>
 </div>

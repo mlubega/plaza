@@ -1,0 +1,15 @@
+<h1>course#index</h1>
+
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(:school, url:{action:'index'}) do |f| %>
+
+      <%= f.label :school_id %>
+      <%= f.collection_select :school_id, School.all, :id, :name %>
+  
+    <% end %>
+	
+    
+  </div>
+</div>

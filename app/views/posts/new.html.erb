@@ -1,19 +1,33 @@
 <% provide(:title, 'New Post') %>
 
-<h1>New Post</h1>
-
-
+<h1><%= @course.title %></h1>
 <div class="row">
-  <div class="span6 offset3">
+  <aside class="span4">
+  <%= link_to "New post", new_post_path, class: "btn btn-info" %>	 
+  <section>
+  <table class="table table-hover">
+    <thead><tr><th>Posts</th></tr></thead>
+	<tbody>
+	<% @topics.each do |t| %>
+	 <tr>
+	   <td><%= link_to "#{t.posts.first.title}", controller:'posts', action:'index', topic_id:t.id %></td>
+     </tr>
+	<% end %>
+    </tbody>
+  </table>
+  </section>
+  </aside>
+
+  <div class="span8">
     <%= form_for(@post) do |f| %>
       <div class="center">
       <%= f.label :title %>
       <%= f.text_field :title %>
       <%= f.label :content %>
       <%= f.text_area :content %> 
-	  <div class="center">  
       <%= f.submit "Post!", class: "btn btn-large btn-info" %>
       </div>
     <% end %>
   </div>
+</div>
 </div>

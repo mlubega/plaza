@@ -1,25 +1,23 @@
 <h1><%= @course.title %><h1>
-<h3 class="center"><%= @course.school.name %><h3>
-  <div class="row">
-	<aside class="span4">
-	  <section>
-	  <table class="table table-hover">
-	    <thead><tr class="danger"><th>Questions</th></tr></thead>
-		<tbody>
-	    <% @topics.each do |t| %>
-	    <tr><td><%= link_to "#{t.posts.first.title}", action:'show', topicID:t.id %></td></tr>
-	    <% end %>
-     	</tbody>
-      </table>
-	  </section>
-    </aside>
-	<div class="span8">
-    <% if @topic %>
-	  <% @topic.posts.each do |post|%>
-	  <%= render partial: 'posts/post', locals: { post: post} %>
-	  <% end %>
+
+<div class="row">
+  <aside class="span4">
+  <%= link_to "New post", new_post_path, class: "btn btn-info" %>	 
+  <section>
+  <table class="table table-hover">
+    <thead><tr><th>Posts</th></tr></thead>
+    <tbody>
+	<% @topics.each do |t| %>
+	<tr>
+	  <td><%= link_to "#{t.posts.first.title}", controller:'posts', action:'index', topic_id:t.id %></td>
+    </tr>
 	<% end %>
-    </div>
-  </div>
+    </tbody>
+  </table>
+  </section>
+  </aside>
+  
+
+</div>
 
 

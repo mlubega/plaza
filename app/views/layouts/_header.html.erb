@@ -12,7 +12,10 @@
 				</a>
 				<ul class="dropdown-menu">
 				  <% current_user.courses.each do |c| %>
-				  <li><%= link_to "#{c.title} #{c.course_number}", course_path(c) %></li>
+				  <li>
+				  <%= link_to "#{c.title} #{c.course_number}",
+					controller:'courses',action:'show',id:c.id,fromCourseLink:true %>
+				  </li>
 				  <% end %>
 				</ul>
 			  </li>	
