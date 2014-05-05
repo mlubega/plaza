@@ -4,16 +4,20 @@ class SchoolsController < ApplicationController
   end
   
   def create
-   @school = School.new(school_params)
-   if !@school.save
-     render 'new'
-   else
-     redirect_to controller: "courses", action: "new"
-   end
+    if params[:school][:going_to_list_courses]
+      redirect_to controller:'courses',action:'index',school_id:params[:school][:school_id]
+    else
+      @school = School.new(school_params)
+      if !@school.save
+        render 'new'
+      else
+        redirect_to controller: "courses", action: "new"
+      end
+    end
   end
 
   def index
-   @schools = Schools.all
+   @schools = School.all
   end
 
   private
