@@ -3,7 +3,7 @@ class PostsController < ApplicationController
     topic = Topic.find(params[:topic_id])
     @posts= topic.posts
     @course = Course.find(cookies[:course_id])
-    @topics = @course.topics
+    @topics = @course.topics.newest_first
   end
 
 
@@ -14,7 +14,7 @@ class PostsController < ApplicationController
     end
     @post = Post.new
     @course = Course.find(cookies[:course_id])
-    @topics = @course.topics
+    @topics = @course.topics.newest_first
   end
   
   def create
@@ -26,9 +26,10 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     course = Course.find(cookies[:course_id])
     topic.course_id = course.id
-    topic.save
-    @post.topic_id = topic.id
     if @post.save
+      topic.save
+      @post.topic_id = topic.id
+      @post.save
       flash[:success] = "Post successfully!"  
       redirect_to action:'index', topic_id:topic.id
     else

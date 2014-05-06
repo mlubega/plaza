@@ -18,7 +18,7 @@ html {
 }
 
 body {
-  padding-top: 60px;
+  padding-top: 60px;  
 }
 
 section {
@@ -138,9 +138,15 @@ input {
 
 thead th {
   color: brown;
+  font-size: 40px;
+  
 }
 
 tbody td {
-   font-size: 0.74em;
+   font-size: 30px;
    font-weight: normal;
+   letter-spacing: 0.05em;
+   line-height: 150%;
+   a { text-decoration: none !important; 
+   }     
 }

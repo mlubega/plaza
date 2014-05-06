@@ -32,8 +32,7 @@ class CoursesController < ApplicationController
       cookies.permanent[:course_id] = params[:id]
     end
     @course = Course.find(cookies[:course_id])
-    @topics = @course.topics
-  
+    @topics = @course.topics.newest_first
   end
   
   
