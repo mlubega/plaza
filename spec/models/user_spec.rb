@@ -18,6 +18,7 @@ describe User do
   it { should respond_to(:enroll!)}
   it { should respond_to(:enrolled?)}
   it { should respond_to(:drop!)}
+  it { should respond_to(:posts)}
   
   it { should be_valid }
 

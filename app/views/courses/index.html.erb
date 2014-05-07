@@ -1,10 +1,11 @@
-<h1>course#index</h1>
+<h1>course Lists</h1>
 
 <div class="row">
   <div class="span6 offset3">
 	<!-- form_for always routes to create action-->
     <%= form_for(:course) do |f| %>
       <%= f.hidden_field :going_to_a_course, value:true %>
+	  <%= f.hidden_field :school_id, value:@school.id %>
       <%= f.label :course_id %>
       <%= f.collection_select :course_id, @courses, :id, :title %>
       <%= f.submit "Select", class:"btn btn-large btn-danger" %>

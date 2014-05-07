@@ -1,7 +1,8 @@
-<h1><%= @course.title %></h1>
+<h3><%= @course.title %></h3>
+<%= link_to "New post", new_post_path, class: "btn btn-danger" %>
+<h2></h2>
 <div class="row">
-  <aside class="span4">
-  <%= link_to "New post", new_post_path, class: "btn btn-info" %>	 
+  <aside class="span4"> 
   <section>
   <table class="table table-hover">
     <thead><tr><th>Posts</th></tr></thead>
@@ -21,7 +22,7 @@
 	 <%= render @posts %> 
 	</ul>
 	<div class="center">
-	<%= link_to "Comment",  {action: 'new',topic_id:@posts.first.topic.id, fromCommentLink:true}, class: "btn btn-large btn-danger" %>
+	<%= link_to "Comment",  {action: 'new',topic_id:@posts.first.topic.id,commenting:true}, class: "btn btn-large btn-danger" %>
 	</div>
   </div>
 </div>

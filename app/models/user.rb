@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   
+  has_many :posts
   has_many :courses, through: :enrollments
   has_many :enrollments, foreign_key: 'user_id', dependent: :destroy
 

@@ -1,7 +1,10 @@
-<h1><%= @course.title %><h1>
+<h3><%= @course.title %></h3>
+<%= link_to "New post", new_post_path, class: "btn btn-danger" %>
+<h2></h2>
+
 <div class="row">
-  <aside class="span4">
-  <%= link_to "New post", new_post_path, class: "btn btn-info" %>	 
+<% if @course.topics.count !=0 %>
+  <aside class="span4">	 
   <section>
   <table class="table table-hover">
     <thead><tr><th>Posts</th></tr></thead>
@@ -15,7 +18,8 @@
   </table>
   </section>
   </aside>
-  
+<% end %>
 </div>
+
 
 

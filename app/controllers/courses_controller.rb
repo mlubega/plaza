@@ -7,9 +7,13 @@ class CoursesController < ApplicationController
     if params[:course][:going_to_a_course]
       course_id = params[:course][:course_id]
       course = Course.find(course_id)
-      course.save
-      current_user.enroll!(course)
-      redirect_to action:'show', id:course_id, fromDropdownMenu:true
+      if current_user.enrolled?(course)
+        flash[:notice] = "You have already enrolled in this course"
+        redirect_to action:'index',school_id:params[:course][:school_id]
+      else
+        current_user.enroll!(course)
+        redirect_to action:'show', id:course_id, fromDropdownMenu:true
+      end
     else
       @course = Course.new(course_params)
       if !@course.save
@@ -23,8 +27,8 @@ class CoursesController < ApplicationController
   end
   
   def index
-    school = School.find(params[:school_id])
-    @courses = school.courses
+    @school = School.find(params[:school_id])
+    @courses = @school.courses
   end
 
   def show

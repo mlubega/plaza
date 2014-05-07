@@ -2,9 +2,14 @@ FactoryGirl.define do
   factory :post do
     title   "Example Post"
     content "This is an example post."
+    user
+    topic
+  end
+  
+  factory :topic do
   end
 
-   factory :user do
+  factory :user do
     name     "Princess Jasmine"
     email    "aghraba@desert.com"
     password "foobar"
