@@ -17,11 +17,15 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
+  
+  def drop
+  end
 
   def show
   end
 
   def edit
+    @enrolled_courses = current_user.courses
   end
   
   def update
@@ -30,7 +34,8 @@ class UsersController < ApplicationController
       flash[:success] = "Info updated successfully!"
       redirect_to controller:'static_pages', action:'home'
     else
-      render 'edit'
+      @enrolled_courses = current_user.courses
+      render'edit'
     end
   end
   

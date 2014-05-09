@@ -139,7 +139,6 @@ input {
 thead th {
   color: brown;
   font-size: 40px;
-  
 }
 
 tbody td {
@@ -149,4 +148,12 @@ tbody td {
    line-height: 150%;
    a { text-decoration: none !important; 
    }     
+}
+
+/*my title*/
+
+.my_heading {
+  font-weight: bold;
+  color: brown;
+  font-size: 40px;
 }

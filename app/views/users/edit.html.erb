@@ -1,5 +1,23 @@
 <% provide(:title, 'Edit')%>
-<h1>Update your information</h1>
+<table class="table table-striped">
+  <thead>
+  	<tr>
+	  <th>Enrolled Courses</th>
+	</tr>
+  </thead>
+  <tbody>
+  	<% @enrolled_courses.each do |c| %>
+	<tr>
+	  <td><%= c.title %></td>
+	  <td>
+		<%= link_to "drop", '#',  
+		data: { confirm: "Are you sure you want to drop #{c.title}?" }, title: c.title %>
+	  </td>	
+	</tr>
+	<% end %>
+  </tbody>
+</table>
+<p class="my_heading">Update your information</p>
 <div class="hero-unit">
 <div class="row">
   <div class="span6 offset2">
