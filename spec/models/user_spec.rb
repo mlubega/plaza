@@ -17,7 +17,7 @@ describe User do
   it { should respond_to(:courses)}
   it { should respond_to(:enroll!)}
   it { should respond_to(:enrolled?)}
-  it { should respond_to(:drop!)}
+  # it { should respond_to(:drop!)}
   it { should respond_to(:posts)}
   
   it { should be_valid }
@@ -41,10 +41,10 @@ describe User do
     it { should be_enrolled(course) }
     its(:courses) { should include(course) }
     
-    describe "and drop" do
-      before { @user.drop!(course)}
-      it { should_not be_enrolled(course)}
-      its(:courses) { should_not include(course) }
-    end
+    # describe "and drop" do
+    #   before { @user.drop!(course)}
+    #   it { should_not be_enrolled(course)}
+    #   its(:courses) { should_not include(course) }
+    # end
   end
 end

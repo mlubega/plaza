@@ -6,14 +6,18 @@
 	</tr>
   </thead>
   <tbody>
-  	<% @enrolled_courses.each do |c| %>
-	<tr>
-	  <td><%= c.title %></td>
-	  <td>
-		<%= link_to "drop", '#',  
-		data: { confirm: "Are you sure you want to drop #{c.title}?" }, title: c.title %>
-	  </td>	
-	</tr>
+	<% if @enrolled_courses.count > 0 %>
+	  <% @enrolled_courses.each do |c| %>
+	  <tr>
+	    <td><%= c.title %></td>
+		<td>
+		<%= link_to "drop", {controller:'users', action:'drop', id:@user.id, course_id:c.id }, 
+			data: { confirm: "Are you sure you want to drop #{c.title}?" }, title: c.title %>
+		</td>	
+	  </tr>
+	  <% end %>
+	<% else %>
+	  <tr><td>Your course list is empty.</td></tr>
 	<% end %>
   </tbody>
 </table>

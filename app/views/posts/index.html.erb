@@ -24,11 +24,13 @@
   </aside>
   
   <div class="span8">
+	<% if @posts %>
 	<ul>
 	 <%= render @posts %> 
 	</ul>
 	<div class="center">
 	<%= link_to "Comment",  {action: 'new',topic_id:@posts.first.topic.id,commenting:true}, class: "btn btn-large btn-danger" %>
 	</div>
+	<% end %>
   </div>
 </div>

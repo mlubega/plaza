@@ -4,8 +4,9 @@ class PostsController < ApplicationController
   before_action :correct_user, only: :destroy
   
   def index
-    topic = Topic.find(params[:topic_id])
-    @posts= topic.posts
+    if topic = Topic.find_by_id(params[:topic_id])
+      @posts= topic.posts
+    end
     @course = Course.find(cookies[:course_id])
     @creator = User.find(@course.creator_id)
     @topics = @course.topics.newest_first
@@ -53,8 +54,10 @@ class PostsController < ApplicationController
   end
   
   def destroy
-    post = @post.destroy
+    post = Post.find(params[:id])
+
     topic = Topic.find(post.topic.id)
+    post.destroy
     if topic.posts.count == 0
       topic.destroy
       redirect_to controller:'courses', action:'show'

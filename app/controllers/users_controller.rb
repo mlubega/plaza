@@ -18,7 +18,18 @@ class UsersController < ApplicationController
     end
   end
   
-  def drop
+  def drop 
+    course_to_drop = Course.find(params[:course_id])
+    course_creator = User.find(course_to_drop.creator_id)
+    enrollment = current_user.enrollments.find_by(course_id: course_to_drop.id)
+    debugger
+    enrollment.destroy
+    if course_creator == current_user
+      course_to_drop.destroy
+    end
+    @enrolled_courses = current_user.courses
+    @user = current_user
+    render 'edit'
   end
 
   def show
@@ -26,6 +37,7 @@ class UsersController < ApplicationController
 
   def edit
     @enrolled_courses = current_user.courses
+    @user = current_user
   end
   
   def update

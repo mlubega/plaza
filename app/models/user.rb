@@ -28,12 +28,12 @@ class User < ActiveRecord::Base
  end
  
  def enroll!(course)
-   enrollments.create!(course_id: course.id)
+   enrollments.create!(course_id: course.id, user_id: self.id)
  end
  
- def drop!(course)
-   enrollments.find_by_course_id(course.id).destroy
- end
+ # def drop!(course)
+ #   enrollments.find_by_course_id(course.id).destroy
+ # end
  
  private
   

@@ -10,7 +10,11 @@ Plaza::Application.routes.draw do
   #get "posts/index"
   #get "posts/new"
   resources :posts
-  resources :users
+  resources :users do
+    member do
+      get :drop
+    end
+  end
   resources :schools
   resources :courses
   resources :sessions, only: [:new, :create, :destroy]
