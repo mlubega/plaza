@@ -4,12 +4,16 @@ describe "Post pages" do
   subject { page }
   
   let(:user) { FactoryGirl.create(:user) }
-  course = Course.create(title:'Math',course_number:'217')
   before do 
-    sign_in user 
-    user.enroll!(course)
-    visit root_path
-    click_link "#{course.title} #{course.course_number}"
+    sign_in(user)
+		visit new_school_path 
+		fill_in "Name", with: "UW-Madison"
+    click_button "Add a school"
+		fill_in "Title", with: "Math"
+		fill_in "Course number", with: "217"
+    select 'UW-Madison', from: "School"
+    click_button "Create Class"
+    click_link "Math 217"
   end
   
   describe "post creation" do
