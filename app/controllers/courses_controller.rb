@@ -16,6 +16,7 @@ class CoursesController < ApplicationController
       end
     else
       @course = Course.new(course_params)
+      @course.creator_id = current_user.id
       if !@course.save
         render 'new'
       else

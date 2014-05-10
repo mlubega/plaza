@@ -1,4 +1,8 @@
+<% if @creator == post.user %>
 <div class="panel panel-warning">
+<% else %>
+<div class="panel panel-info">
+<% end %>
   <div class="panel-heading">
 	<h3 class="panel-title"><%= post.title %></h3>
   </div>

@@ -7,6 +7,7 @@ class PostsController < ApplicationController
     topic = Topic.find(params[:topic_id])
     @posts= topic.posts
     @course = Course.find(cookies[:course_id])
+    @creator = User.find(@course.creator_id)
     @topics = @course.topics.newest_first
   end
 
@@ -19,6 +20,7 @@ class PostsController < ApplicationController
     end
     @post = Post.new
     @course = Course.find(cookies[:course_id])
+    @creator = User.find(@course.creator_id)
     @topics = @course.topics.newest_first
   end
   
