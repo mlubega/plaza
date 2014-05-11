@@ -9,10 +9,11 @@ Plaza::Application.routes.draw do
  # get "static_pages/home" 
   #get "posts/index"
   #get "posts/new"
+  
   resources :posts
   resources :users do
     member do
-      get :drop
+      delete :drop
     end
   end
   resources :schools

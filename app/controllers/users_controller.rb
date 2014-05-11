@@ -22,7 +22,6 @@ class UsersController < ApplicationController
     course_to_drop = Course.find(params[:course_id])
     course_creator = User.find(course_to_drop.creator_id)
     enrollment = current_user.enrollments.find_by(course_id: course_to_drop.id)
-    debugger
     enrollment.destroy
     if course_creator == current_user
       course_to_drop.destroy

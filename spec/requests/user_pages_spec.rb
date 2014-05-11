@@ -55,9 +55,9 @@ describe "UserPages" do
         click_button 'Select'
         click_link "Settings"
       end
-      it { should have_link("drop") }
+      it { should have_button("drop") }
       it "should drop a course" do
-        expect {click_link "drop"}.to change(student.courses, :count)
+        expect {click_button "drop"}.to change(student.courses, :count)
       end
     end   
     

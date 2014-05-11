@@ -9,10 +9,23 @@
 	<% if @enrolled_courses.count > 0 %>
 	  <% @enrolled_courses.each do |c| %>
 	  <tr>
-	    <td><%= c.title %></td>
+	    <td><h4><%= "#{c.title} #{c.course_number}"%></h4></td>
 		<td>
-		<%= link_to "drop", {controller:'users', action:'drop', id:@user.id, course_id:c.id }, 
-			data: { confirm: "Are you sure you want to drop #{c.title}?" }, title: c.title %>
+		<% if c.creator_id == @user.id %>
+		<%= button_to "delete", 
+		    { controller:'users', action:'drop', id:@user.id, course_id:c.id }, 
+		    method: :delete,
+			data: { confirm: "Are you sure you want to delete the course #{c.title} #{c.course_number}?   If you delete this course, your students will not see this course anymore." }, 
+			title: c.title,
+			class: "btn btn-danger" %>
+		<% else %>
+		<%= button_to "drop", 
+		    { controller:'users', action:'drop', id:@user.id, course_id:c.id }, 
+		    method: :delete,
+			data: { confirm: "Are you sure you want to drop #{c.title} #{c.course_number}?" }, 
+			title: c.title,
+			class: "btn btn-warning" %>
+		<% end %>
 		</td>	
 	  </tr>
 	  <% end %>
