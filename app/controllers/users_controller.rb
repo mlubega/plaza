@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     course_creator = User.find(course_to_drop.creator_id)
     enrollment = current_user.enrollments.find_by(course_id: course_to_drop.id)
     enrollment.destroy
-    if course_creator == current_user
+    if course_creator == current_user || current_user.id == 1 # The first user have be able to delete any course once they join the course.
       course_to_drop.destroy
     end
     @enrolled_courses = current_user.courses
