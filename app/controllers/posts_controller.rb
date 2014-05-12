@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   
   def index
     if topic = Topic.find_by_id(params[:topic_id])
-      @posts= topic.posts
+      @posts = topic.posts
     end
     @course = Course.find(cookies[:course_id])
     @creator = User.find(@course.creator_id)
